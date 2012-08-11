@@ -1,0 +1,53 @@
+<project name="Ext.ux.callout.Callout" default="build">
+	
+	<target name="clean" description="Remove artifacts in build directory from previous builds.">
+		<delete dir="build" />
+	</target>
+	
+	<target name="init" description="Initialize build directory.">
+		<mkdir dir="build" />
+		<mkdir dir="build/src" />
+		<mkdir dir="build/resource" />
+		<mkdir dir="build/resource/css" />
+		<mkdir dir="build/resource/css/theme" />
+	</target>
+	
+	<target name="build" depends="init" description="Build JavaScript and CSS files from CoffeeScript and LESS source code.">
+		
+		<echo message="Compiling CoffeeScript..." />
+		<exec executable="coffee" dir=".">
+			<arg line="-cb -o build/src src/coffee" />
+		</exec>
+		
+		<echo message="Compiling LESS..." />
+		<apply executable="lessc" dir="resource/less/theme" dest="build/resource/css/theme" parallel="false">
+			<srcfile />
+			<targetfile />
+			<fileset dir="resource/less/theme">
+				<include name="*.less" />
+			</fileset>
+			<mapper type="glob" from="*.less" to="*.css" />
+		</apply>
+		<apply executable="lessc" dir="resource/less/theme" dest="build/resource/css/theme" parallel="false">
+			<arg value="-x" />
+			<srcfile />
+			<targetfile />
+			<fileset dir="resource/less/theme">
+				<include name="*.less" />
+			</fileset>
+			<mapper type="glob" from="*.less" to="*.min.css" />
+		</apply>
+		
+		<echo message="Copying compiled files to example directory..." />
+		<copy todir="example">
+			<fileset dir="build/src"></fileset>
+		</copy>
+		<copy todir="example/resource">
+			<fileset dir="build/resource"></fileset>
+		</copy>
+		
+		<echo message="Done." />
+		
+	</target>
+	
+</project>
