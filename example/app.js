@@ -482,6 +482,15 @@ Ext.onReady(function () {
 		],
 		
 		listeners: {
+			afterlayout: {
+				fn: function () {
+					// NOTE: Quick and dirty workaround to make this example application work with Ext JS 4.0, where no 'boxready' event is dispatched.
+					if (Ext.getVersion('extjs') && Ext.getVersion('extjs').isLessThan('4.1.0')) {
+						this.fireEvent('boxready');
+					}
+				},
+				single: true
+			},
 			boxready: function () {
 				Ext.defer( function () {
 					Ext.widget( 'callout', {

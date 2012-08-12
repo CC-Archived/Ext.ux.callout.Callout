@@ -87,6 +87,10 @@ Ext.define( 'Ext.ux.callout.Callout',
 	@inheritdoc
 	###
 	initComponent: ->
+		# Workaround: Ext JS 4.0 doesn't apply our default configuration values.
+		if Ext.getVersion( 'extjs' ) and Ext.getVersion( 'extjs' ).isLessThan( '4.1.0' )
+			Ext.applyIf( @, @config )
+		
 		return @callParent( arguments )
 	
 	###*
@@ -165,7 +169,7 @@ Ext.define( 'Ext.ux.callout.Callout',
 	Handles a 'mousedown' event on the current HTML document.
 	###
 	onDocMouseDown: ( event ) ->
-		if @autoHide and not event.within( @getEl() )
+		if @getAutoHide() and not event.within( @getEl() )
 			@hide()
 		return
 )
