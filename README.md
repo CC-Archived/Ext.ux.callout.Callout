@@ -21,7 +21,7 @@ An `Ext.ux.callout.Callout` can be easily configured to:
 
 Because an `Ext.ux.callout.Callout` is an `Ext.Container` subclass, its content is not limited to text.  An `Ext.ux.callout.Callout` can be configured with any standard container layout (via the `layout` config) and populated with `Ext.Component`s (via the `item` config). 
 
-Its appearance and the associated callout arrow's appearance are configured through CSS.  This distribution includes several example CSS-based themes that can be applied to the `Ext.ux.callout.Callout` via the `cls` config.
+Its appearance and the associated callout arrow's appearance are configured through CSS.  This distribution includes several example CSS-based themes that can be applied to the `Ext.ux.callout.Callout` (via the `cls` config).
 
 Also included are the the original [LESS](http://lesscss.org/) source files and mixins used to generate those example CSS-based themes.  Leveraging the supplied mixins, you can easily create your own custom callout themes, by supplying alternate values for the:
 
@@ -58,4 +58,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Acknowledgements
 
-* The sample LESS mixin and associated CSS themes provided were derived from the CSS arrow technique demonstrated by [http://cssarrowplease.com](http://cssarrowplease.com).
+* The example LESS mixin and associated CSS themes provided were derived from the CSS arrow technique demonstrated by [http://cssarrowplease.com](http://cssarrowplease.com).
