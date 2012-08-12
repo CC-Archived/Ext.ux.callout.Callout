@@ -35,9 +35,11 @@ Also included are the the original [LESS](http://lesscss.org/) source files and 
 
 # Example
 
-![Screenshot](https://github.com/CodeCatalyst/Ext.ux.callout.Callout/raw/master/example/resource/image/screenshot.png)
+[![Screenshot](https://github.com/CodeCatalyst/Ext.ux.callout.Callout/raw/master/example/resource/image/screenshot.png)](http://lab.codecatalyst.com/Ext.ux.callout.Callout/)
 
 Included in this distribution is an example application that demonstrates the use of `Ext.ux.callout.Callout` to present hint overlays and a popover window as part of its user interface.  Additionally, the application presents a "playground" for interactively experimenting with `Ext.ux.callout.Callout`; you can  create callouts, experiment with their available configuration values, and view and copy the JavaScript code necessary to create a callout with those configuration values.
+
+You can try out a live deployment of this example application here: [http://lab.codecatalyst.com/Ext.ux.callout.Callout/](http://lab.codecatalyst.com/Ext.ux.callout.Callout/).
 
 # Version History
 
