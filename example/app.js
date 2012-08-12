@@ -1,3 +1,31 @@
+/*
+Example Application for Ext.ux.callout.Callout - CSS styleable floating callout container with optional arrow for use with Ext JS 4.0+
+http://github.com/CodeCatalyst/Ext.ux.callout.Callout
+
+@author John Yanarella
+@version: 1.0
+
+Copyright (c) 2012 CodeCatalyst, LLC - http://www.codecatalyst.com/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
 Ext.Loader.setConfig({
 	enabled: true,
 	paths: {
@@ -458,6 +486,15 @@ Ext.onReady(function () {
 				Ext.defer( function () {
 					Ext.widget( 'callout', {
 						cls: 'yellow',
+						html: 'Welcome to the <a href="https://github.com/CodeCatalyst/Ext.ux.callout.Callout">Ext.ux.callout.Callout</a> explorer, an example application where you can experiment with configuration values for this custom component and see the corresponding JavaScript code.',
+						width: 340,
+						target: 'viewport',
+						relativePosition: 't-t',
+						relativeOffsets: [0, 58]
+					}).show();
+					
+					Ext.widget( 'callout', {
+						cls: 'yellow',
 						html: '<b>1.</b> Modify the configuration values here.',
 						target: '#configurationFormPanel',
 						calloutArrowLocation: 'left',
@@ -470,17 +507,15 @@ Ext.onReady(function () {
 						html: '<b>2.</b> Click here.',
 						target: '#createCalloutButton',
 						calloutArrowLocation: 'bottom-left',
-						relativePosition: 'b-tr',
-						dismissDelay: 0
+						relativePosition: 'b-tr'
 					}).show();
 					
 					Ext.widget( 'callout', {
 						cls: 'yellow',
-						html: '<b>3.</b> A preview will be shown here.',
+						html: '<b>3.</b> An example callout will be shown here.',
 						target: '#examplePanel',
 						relativePosition: 'b-b',
-						relativeOffsets: [0, -25],
-						dismissDelay: 0
+						relativeOffsets: [0, -25]
 					}).show();
 				}, 50 );
 			}
