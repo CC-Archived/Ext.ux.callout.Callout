@@ -88,6 +88,9 @@ Ext.define('Ext.ux.callout.Callout', {
   */
 
   initComponent: function() {
+    if (Ext.getVersion('extjs') && Ext.getVersion('extjs').isLessThan('4.1.0')) {
+      Ext.applyIf(this, this.config);
+    }
     return this.callParent(arguments);
   },
   /**
@@ -171,7 +174,7 @@ Ext.define('Ext.ux.callout.Callout', {
   */
 
   onDocMouseDown: function(event) {
-    if (this.autoHide && !event.within(this.getEl())) {
+    if (this.getAutoHide() && !event.within(this.getEl())) {
       this.hide();
     }
   }
