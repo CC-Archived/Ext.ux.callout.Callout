@@ -68,14 +68,14 @@ Ext.define( 'Ext.ux.callout.Callout',
 		fadeOutDuration: 200
 		
 		###*
-		@cfg {Boolean] Indicates whether to automatically hide the callout after a mouse click anywhere in the document or after {@link dismissDelay} has expired.
+		@cfg {Boolean] Indicates whether to automatically hide the callout after a mouse click anywhere outside of the callout.
 		###
 		autoHide: true
 		
 		###*
-		@cfg {Number} Duration in milliseconds to show the callout before automatically dismissing it.  A value of 0 will disabled automatic dismissal.
+		@cfg {Number} Duration in milliseconds to show the callout before automatically dismissing it.  A value of 0 will disable automatic dismissal.
 		###
-		dismissDelay: 5000
+		dismissDelay: 0
 	
 	###*
 	@protected
@@ -109,7 +109,7 @@ Ext.define( 'Ext.ux.callout.Callout',
 			elementOrComponent = if Ext.isString( @getTarget() ) then Ext.ComponentQuery.query( @getTarget() )[0] else @getTarget()
 			@getEl().anchorTo( elementOrComponent.el || elementOrComponent, @getRelativePosition(), @getRelativeOffsets() || [ 0, 0 ] )
 		
-		if @autoHide and not @dismissTimer? and @getDismissDelay() > 0
+		if not @dismissTimer? and @getDismissDelay() > 0
 			@dismissTimer = Ext.defer( @hide, @getDismissDelay(), @ )
 		return @
 	
