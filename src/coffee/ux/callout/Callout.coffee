@@ -3,7 +3,7 @@ Ext.ux.callout.Callout - CSS styleable floating callout container with optional 
 http://github.com/CodeCatalyst/Ext.ux.callout.Callout
 
 @author John Yanarella
-@version: 1.0
+@version: 1.0.1
 
 Copyright (c) 2012 CodeCatalyst, LLC - http://www.codecatalyst.com/
 
@@ -111,7 +111,19 @@ Ext.define( 'Ext.ux.callout.Callout',
 		
 		if @getTarget()?
 			elementOrComponent = if Ext.isString( @getTarget() ) then Ext.ComponentQuery.query( @getTarget() )[0] else @getTarget()
-			@getEl().anchorTo( elementOrComponent.el || elementOrComponent, @getRelativePosition(), @getRelativeOffsets() || [ 0, 0 ] )
+			@getEl().anchorTo( 
+				elementOrComponent.el || elementOrComponent, 
+				@getRelativePosition(), 
+				@getRelativeOffsets() || [ 0, 0 ], 
+				false, 
+				50, 
+				Ext.bind(
+					->
+						@afterSetPosition( @getEl().getLeft(), @getEl().getRight() )
+						return
+					@
+				)
+			)
 		
 		if not @dismissTimer? and @getDismissDelay() > 0
 			@dismissTimer = Ext.defer( @hide, @getDismissDelay(), @ )
@@ -122,6 +134,7 @@ Ext.define( 'Ext.ux.callout.Callout',
 	###
 	hide: ->
 		@clearTimers()
+		@getEl().removeAnchor()
 		return @callParent( arguments )
 	
 	###*

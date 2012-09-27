@@ -44,6 +44,7 @@ You can try out a live deployment of this example application here: [http://lab.
 # Version History
 
 * 1.0 - Initial release.
+* 1.0.1 - Anchoring fixes + resolved memory leak related to anchoring.
 
 # License
 
