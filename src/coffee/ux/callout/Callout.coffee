@@ -182,6 +182,28 @@ Ext.define( 'Ext.ux.callout.Callout',
 		return
 	
 	###*
+	@inheritdoc
+	###
+	onResize: () ->
+		@callParent()
+		if @getTarget() and @isVisible()?
+			elementOrComponent = if Ext.isString( @getTarget() ) then Ext.ComponentQuery.query( @getTarget() )[0] else @getTarget()
+			@getEl().anchorTo( 
+				elementOrComponent.el || elementOrComponent, 
+				@getRelativePosition(), 
+				@getRelativeOffsets() || [ 0, 0 ], 
+				false, 
+				50, 
+				Ext.bind(
+					->
+						@afterSetPosition( @getEl().getLeft(), @getEl().getRight() )
+						return
+					@
+				)
+			)
+		return
+	
+	###*
 	@protected
 	Handles a 'mousedown' event on the current HTML document.
 	###
