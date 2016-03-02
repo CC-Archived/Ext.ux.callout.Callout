@@ -155,10 +155,11 @@ Ext.define( 'Ext.ux.callout.Callout',
 		
 		@mon( Ext.getDoc(), 'mousedown', @onDocMouseDown, @ )
 		
-		@getEl().setOpacity( 0.0 )
-		@getEl().fadeIn(
-			duration: @getFadeInDuration()
-		)
+		if @getFadeInDuration() > 0
+			@getEl().setOpacity( 0.0 )
+			@getEl().fadeIn(
+				duration: @getFadeInDuration()
+			)
 		return
 	
 	###*
@@ -167,14 +168,17 @@ Ext.define( 'Ext.ux.callout.Callout',
 	onHide: ( animateTarget, cb, scope ) ->
 		@mun( Ext.getDoc(), 'mousedown', @onDocMouseDown, @ )
 		
-		@getEl().fadeOut(
-			duration: @getFadeOutDuration()
-			callback: ->
-				@getEl().hide()
-				@afterHide( cb, scope )
-				return
-			scope: @
-		)
+		if @getFadeOutDuration() > 0
+			@getEl().fadeOut(
+				duration: @getFadeOutDuration()
+				callback: ->
+					@getEl().hide()
+					@afterHide( cb, scope )
+					return
+				scope: @
+			)
+		else
+			@callParent( arguments )
 		return
 	
 	###*
