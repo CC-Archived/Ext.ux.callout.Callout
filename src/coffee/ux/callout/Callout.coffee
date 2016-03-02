@@ -3,9 +3,9 @@ Ext.ux.callout.Callout - CSS styleable floating callout container with optional 
 http://github.com/CodeCatalyst/Ext.ux.callout.Callout
 
 @author John Yanarella
-@version: 1.0.1
+@version: 1.0.2
 
-Copyright (c) 2012 CodeCatalyst, LLC - http://www.codecatalyst.com/
+Copyright (c) 2012-2016 CodeCatalyst, LLC - http://www.codecatalyst.com/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
