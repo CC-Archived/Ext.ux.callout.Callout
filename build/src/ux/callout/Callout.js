@@ -4,7 +4,7 @@ Ext.ux.callout.Callout - CSS styleable floating callout container with optional 
 http://github.com/CodeCatalyst/Ext.ux.callout.Callout
 
 @author John Yanarella
-@version: 1.0.2
+@version: 1.0.3
 
 Copyright (c) 2012-2016 CodeCatalyst, LLC - http://www.codecatalyst.com/
 
@@ -129,7 +129,9 @@ Ext.define('Ext.ux.callout.Callout', {
 
   hide: function() {
     this.clearTimers();
-    this.getEl().removeAnchor();
+    if (this.rendered) {
+      this.getEl().removeAnchor();
+    }
     return this.callParent(arguments);
   },
   /**
@@ -175,6 +177,20 @@ Ext.define('Ext.ux.callout.Callout', {
       });
     } else {
       this.callParent(arguments);
+    }
+  },
+  /**
+  	@inheritdoc
+  */
+
+  onResize: function() {
+    var elementOrComponent;
+    this.callParent();
+    if (this.getTarget() && (this.isVisible() != null)) {
+      elementOrComponent = Ext.isString(this.getTarget()) ? Ext.ComponentQuery.query(this.getTarget())[0] : this.getTarget();
+      this.getEl().anchorTo(elementOrComponent.el || elementOrComponent, this.getRelativePosition(), this.getRelativeOffsets() || [0, 0], false, 50, Ext.bind(function() {
+        this.afterSetPosition(this.getEl().getLeft(), this.getEl().getRight());
+      }, this));
     }
   },
   /**
