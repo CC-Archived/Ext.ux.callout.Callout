@@ -134,7 +134,8 @@ Ext.define( 'Ext.ux.callout.Callout',
 	###
 	hide: ->
 		@clearTimers()
-		@getEl().removeAnchor()
+		if @rendered
+			@getEl().removeAnchor()
 		return @callParent( arguments )
 	
 	###*
