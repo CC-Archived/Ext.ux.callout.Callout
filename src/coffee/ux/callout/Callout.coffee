@@ -186,7 +186,7 @@ Ext.define( 'Ext.ux.callout.Callout',
 	###
 	onResize: () ->
 		@callParent()
-		if @getTarget() and @isVisible()?
+		if @getTarget()? and @isVisible()
 			elementOrComponent = if Ext.isString( @getTarget() ) then Ext.ComponentQuery.query( @getTarget() )[0] else @getTarget()
 			@getEl().anchorTo( 
 				elementOrComponent.el || elementOrComponent, 
