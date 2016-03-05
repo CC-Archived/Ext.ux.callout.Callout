@@ -186,7 +186,7 @@ Ext.define('Ext.ux.callout.Callout', {
   onResize: function() {
     var elementOrComponent;
     this.callParent();
-    if (this.getTarget() && (this.isVisible() != null)) {
+    if ((this.getTarget() != null) && this.isVisible()) {
       elementOrComponent = Ext.isString(this.getTarget()) ? Ext.ComponentQuery.query(this.getTarget())[0] : this.getTarget();
       this.getEl().anchorTo(elementOrComponent.el || elementOrComponent, this.getRelativePosition(), this.getRelativeOffsets() || [0, 0], false, 50, Ext.bind(function() {
         this.afterSetPosition(this.getEl().getLeft(), this.getEl().getRight());
